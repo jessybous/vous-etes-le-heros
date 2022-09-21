@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  color: #fff;
+}
+body {
+  background-color: #282aa4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.game {
+  display: flex;
+  min-width: 400px;
+  max-width: 900px;
+  min-height: 100px;
+  background-color: #6d58d7;
+  border: 10px solid#b961d9;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.logo {
+  font-family: "Homemade Apple", cursive;
+  color: #efd2ea;
+  text-transform: capitalize;
+}
+
+.chapitre {
+  font-family: "Yeon Sung", cursive;
+}
+
+.text {
+  font-family: "Eagle Lake", cursive;
+  margin-top: 15px;
+}
+.photo {
+  width: 50%;
+  vertical-align: middle;
+  display: inline;
+  margin-top: 15px;
+}
+
+.option {
+  display: flex;
+  margin-top: 15px;
+  width: 100%;
+  justify-content: space-between;
+  font-family: "Eagle Lake", cursive;
+  padding-bottom: 10px;
+}
+
+.bouton {
+  background-color: #8f55d6;
+  border: 5px solid #e4b4dc;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.bouton:hover {
+  background-color: #e4b4dc;
+  border: 5px solid #c969bb;
+  color: #8f55d6;
+}
