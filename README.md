@@ -5,7 +5,7 @@
 <br />
 **Inspiration**: Man of maden
 <br />
-**Palette de couleur**: [coolors.co](https://coolors.co/c969bb-b961d9-8f55d6-6d58d7-3a3ccf-160059)
+**Palette de couleur**: [coolors.co](https://coolors.co/c969bb-b961d9-8f55d6-6d58d7-3a3ccf-160059-ff0000-140000)
 
 ## Diagramme
 
