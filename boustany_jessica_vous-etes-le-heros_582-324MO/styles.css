@@ -3,7 +3,7 @@
   color: #fff;
 }
 body {
-  background-image: linear-gradient(#160059,#282aa4);
+  background-image: linear-gradient(#160059,#160059,#282aa4);
   display: flex;
   align-items: center;
   justify-content: center;
