@@ -92,4 +92,14 @@ function goToChapter(chapterName){
     document.querySelector(".photo").src = chaptersObj[chapterName]["img"];
     document.querySelector(".option").innerHTML.text = chaptersObj[chapterName]["options"];
 
+    let TableauOptions = document.querySelector('.option')
+    TableauOptions.innerHTML=""
+    for(element of chaptersObj[chapterName]["options"]){
+        let newButton = document.createElement("button");
+        newButton.setAttribute("onclick",element["action"]);
+        newButton.setAttribute("type", "button");
+        let buttonText = document.createTextNode(element["optionText"]);
+        newButton.appendChild(buttonText);
+        TableauOptions.appendChild(newButton)
+    }
 }
