@@ -46,16 +46,16 @@ wait: {
     text: "Luka décide de ne rien tempêter et d’attendre. Plus le temps passe, plus les bruits se rapproche. La créature était tellement proche de lui qu’il arrêta de respirer. Au bout de 10 secondes, le silence était complet. Luka regarde autour de lui pour essayer de voir quelque-chose mais en vain. Soudain, quelque chose d’énorme saute sur lui et lui hurle dessus, ce qui fait Luka hurler de peur il essaie de se débattre, mais la créature le tient fermement. C’était lui ou la créature. Il tape à coter de lui pour essayer de trouver quelque chose de pointu pour attaquer la créature. Luka a-t-il un objet pointu en sa possession?",
     img:"assets/foret-yeux.png",
     options:[
-        {optionText:"Oui", action: "goToChapter('glass')"},
+        {optionText:"Oui", action: "impact()"},
         {optionText:"Non", action: "goToChapter('death')"}]
 },
 
 death: {
     subtitle: "GameOver",
-    text: "Luka décide de se lever et marcher vers les bruits. Malheureusement, la créature lui saute dessus et le tue. Vous avez récupérer un bout de vitre pointu.",
+    text: "Malheureusement, la créature lui saute dessus et le tue. Vous avez récupérer un bout de vitre pointu.",
     img:"assets/foret-yeux.png",
    options:[
-    {optionText:"Recommencer", action: "goToChapter('resetPage')"}]
+    {optionText:"Recommencer", action: "etat()"}]
 },
 
 glass: {
@@ -64,7 +64,7 @@ glass: {
     img:"assets/foret-bleu.png",
     options:[
         {optionText:"S'enfuire", action: "goToChapter('run')"},
-        {optionText:"rester", action: "hemoragie"}]
+        {optionText:"rester", action: "goToChapter('hemoragie')"}]
 },
 run: {
     subtitle: "Le lac enchanté",
@@ -76,10 +76,11 @@ run: {
 hemoragie: {
     subtitle: "GameOver",
     text: "la créature est trop lourde pour vous. plus le temps passe plus Luka a une sensation de brûlure dans ses poumons et fini par mourir d'une hémoragie",
-    img:"assets/foret-yeux.png"
+    img:"assets/foret-yeux.png",
+    options:[
+        {optionText:"Recommencer", action: "goToChapter('resetPage')"}]
 },
-options:[
-    {optionText:"Recommencer", action: "goToChapter('resetPage')"}]
+
 }
 
 
@@ -89,17 +90,31 @@ function goToChapter(chapterName){
     console.log(chaptersObj[chapterName]["text"])
     document.querySelector(".chapitre").innerHTML = chaptersObj[chapterName]["subtitle"];
     document.querySelector(".text").innerHTML = chaptersObj[chapterName]["text"];
-    document.querySelector(".photo").src = chaptersObj[chapterName]["img"];
-    document.querySelector(".option").innerHTML.text = chaptersObj[chapterName]["options"];
+    document.querySelector(".option").innerHTML = ""
+    document.querySelector(".image").innerHTML = `<img src='assets/"+ chaptersObj[chapterName]['img']+"'>`;
 
-    let TableauOptions = document.querySelector('.option')
-    TableauOptions.innerHTML=""
-    for(element of chaptersObj[chapterName]["options"]){
-        let newButton = document.createElement("button");
-        newButton.setAttribute("onclick",element["action"]);
-        newButton.setAttribute("type", "button");
-        let buttonText = document.createTextNode(element["optionText"]);
+    for(i in chaptersObj[chapterName].options){
+        const newButton = document.createElement("button");
+        newButton.setAttribute("onclick",chaptersObj[chapterName].options[i].action);
+        newButton.setAttribute("class", "bouton");
+        const buttonText = document.createTextNode(chaptersObj[chapterName].options[i].optionText);
         newButton.appendChild(buttonText);
-        TableauOptions.appendChild(newButton)
+        const parent = document.querySelector(".option")
+        parent.appendChild(newButton)
+    }
+}
+
+let glassfound = false;
+
+function etat(){
+    glassfound= true;
+    goToChapter("resetPage");
+}
+
+function impact(){
+    if(glassfound==true){
+        goToChapter("glass")
+    }else{
+        goToChapter("death")
     }
 }
