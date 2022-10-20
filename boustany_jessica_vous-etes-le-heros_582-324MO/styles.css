@@ -67,6 +67,8 @@ max-height: 300px;
   padding: 10px;
   border-radius: 10px;
   transition: background-color 0.5s;
+  font-family: "Eagle Lake", cursive;
+
 }
 
 .bouton:hover {

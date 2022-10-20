@@ -47,17 +47,17 @@ let chaptersObj = {
   },
   wait: {
     subtitle: "L'affrontement",
-    text: "Luka décide de ne rien tempêter et d’attendre. Plus le temps passe, plus les bruits se rapproche. La créature était tellement proche de lui qu’il arrêta de respirer. Au bout de 10 secondes, le silence était complet. Luka regarde autour de lui pour essayer de voir quelque-chose mais en vain. Soudain, quelque chose d’énorme saute sur lui et lui hurle dessus, ce qui fait Luka hurler de peur il essaie de se débattre, mais la créature le tient fermement. C’était lui ou la créature. Il tape à coter de lui pour essayer de trouver quelque chose de pointu pour attaquer la créature. Luka a-t-il un objet pointu en sa possession?",
+    text: "Luka décide de ne rien tempêter et d’attendre. Plus le temps passe, plus les bruits se rapproche. La créature était tellement proche de lui qu’il arrêta de respirer. Au bout de 10 secondes, le silence était complet. Luka regarde autour de lui pour essayer de voir quelque-chose mais en vain. Soudain, quelque chose d’énorme saute sur lui et lui hurle dessus, ce qui fait Luka hurler de peur il essaie de se débattre, mais la créature le tient fermement. C’était lui ou la créature. Devrait-il se défendre?",
     img: "foret-yeux.png",
     options: [
-      { optionText: "Oui", action: "impact()" },
-      { optionText: "Non", action: "goToChapter('death')" },
+      { optionText: "se défendre", action: "impact()" },
+      { optionText: "chercher une arme", action: "goToChapter('death')" },
     ],
   },
 
   death: {
     subtitle: "GameOver",
-    text: "Malheureusement, la créature lui saute dessus et le tue. Vous avez récupérer un bout de vitre pointu.",
+    text: "Malheureusement, la créature fini par le dévorer, car il n'a pas pu se défendre. Vous avez récupérer un bout de vitre pointu qui vous sera utile plus tard.",
     img: "foret-yeux.png",
     options: [{ optionText: "Recommencer", action: "etat()" }],
   },
