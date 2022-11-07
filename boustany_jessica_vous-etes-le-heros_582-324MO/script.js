@@ -41,6 +41,7 @@ let chaptersObj = {
     subtitle: "GameOver",
     text: "Luka décide de se lever et marcher vers les bruits. Malheureusement, la créature lui saute dessus et le tue. Vous avez récupérer un bout de vitre pointu.",
     img: "foret-yeux.png",
+    video: "gif_zombie.mp4",
     options: [
       { optionText: "Recommencer", action: "goToChapter('resetPage')" },
     ],
@@ -75,6 +76,7 @@ let chaptersObj = {
     subtitle: "Le lac enchanté",
     text: "Luka dégage la créature et se met à courir comme il n’a jamais couru dans sa vie. Il bouscule quelque chose qui ressemble à des escaliers et monte. Il voit au loin la forme d’une porte créer par la lumière provenant d’en dehors de la maison. Il défonce la porte, mais a sa surprise, il ne retrouve pas le foret qu’il attendait de voir. Autour de lui se trouvait des choses inexplicables. Des créatures de toutes sortes, des arbres déformés, etc. tout autour de lui bougeaient, et il sentit une soudaine envie de vomir. Les bruits de la créature se rapprochait de lui et il se remit à courir. Au bout d’une course de 20 minutes, Luka trébuche dans quelque chose qui ressemble à un lac. Il sort de l’eau pour respirer et soudainement tout devient plus clair autour de lui. Les arbres arrêtent de bouger, les créatures disparaissent et tout pris la forme de la forêt de ses souvenirs. Les bruits de monstres se transforma en la voix de ses amis qui l’appellent au loin. Après une enquête policière, la vérité sur ce qui s’est passé éclate. Dans la maison se trouvait un gaz hallucinogène propager dans la maison pas les membres d’un culte, qui ont pris Luka en hottage pour le sacrifier dans un rituel.",
     img: "foret-homme.png",
+    video: "gif_run.mp4",
     options: [
       { optionText: "Recommencer", action: "goToChapter('resetPage')" },
     ],
@@ -98,6 +100,8 @@ function goToChapter(chapterName) {
   document.querySelector(".option").innerHTML = "";
   document.querySelector(".image").innerHTML = `<img src="assets/`+ chaptersObj[chapterName]['img']+`">`;
 
+
+
   for (i in chaptersObj[chapterName].options) {
     const newButton = document.createElement("button");
     newButton.setAttribute(
@@ -111,6 +115,10 @@ function goToChapter(chapterName) {
     newButton.appendChild(buttonText);
     const parent = document.querySelector(".option");
     parent.appendChild(newButton);
+  }
+
+  if(chaptersObj[chapterName].video !==null){
+    document.querySelector(".photo").innerHTML = `<video src="assets/`+ chaptersObj[chapterName]['video']+`">`;
   }
 }
 
