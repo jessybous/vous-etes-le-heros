@@ -92,14 +92,19 @@ let chaptersObj = {
 };
 
 function goToChapter(chapterName) {
+
+  localStorage.setItem(`name`,[chapterName]);
+
+  let audio = new Audio("assets/woosh.mp3")
+  audio.play()
+
+
   console.log(chaptersObj[chapterName]["subtitle"]);
   console.log(chaptersObj[chapterName]["text"]);
   document.querySelector(".chapitre").innerHTML =
     chaptersObj[chapterName]["subtitle"];
   document.querySelector(".text").innerHTML = chaptersObj[chapterName]["text"];
   document.querySelector(".option").innerHTML = "";
-  document.querySelector(".image").innerHTML = `<img src="assets/`+ chaptersObj[chapterName]['img']+`">`;
-
 
 
   for (i in chaptersObj[chapterName].options) {
@@ -117,14 +122,18 @@ function goToChapter(chapterName) {
     parent.appendChild(newButton);
   }
 
-  if(chaptersObj[chapterName].video !==null){
-    document.querySelector(".photo").innerHTML = `<video src="assets/`+ chaptersObj[chapterName]['video']+`">`;
+  if(chaptersObj[chapterName]["video"]){
+    document.querySelector(".image").innerHTML = `<video src="assets/`+ chaptersObj[chapterName]['video']+`" loop muted autoplay></video>`;
+  }else{
+    document.querySelector(".image").innerHTML = `<img src="assets/`+ chaptersObj[chapterName]['img']+`">`;
   }
 }
 
-let glassfound = false;
+localStorage.setItem("glass",false);
+let glassfound = Boolean("glass");
 
 function etat() {
+  localStorage.setItem("glass",true);
   glassfound = true;
   goToChapter("resetPage");
 }
@@ -136,3 +145,15 @@ function impact() {
     goToChapter("death");
   }
 }
+
+let chapter =localStorage.getItem("name")
+
+function startGame(){
+  if(chapter!=="resetPage"){
+    goToChapter(chapter)
+  }else{
+  goToChapter("resetPage")
+  }
+}
+
+startGame()
