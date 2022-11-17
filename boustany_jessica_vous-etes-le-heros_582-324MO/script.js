@@ -134,7 +134,7 @@ let glassfound = Boolean("glass");
 
 function etat() {
   localStorage.setItem("glass",true);
-  glassfound = true;
+  glassfound =Boolean("glass");
   goToChapter("resetPage");
 }
 
