@@ -52,7 +52,7 @@ let chaptersObj = {
     img: "foret-yeux.png",
     options: [
       { optionText: "se défendre", action: "impact()" },
-      { optionText: "chercher une arme", action: "goToChapter('death')" },
+      { optionText: "chercher une arme", action: "impact()" },
     ],
   },
 
