@@ -129,6 +129,12 @@ function goToChapter(chapterName) {
   }
 }
 
+function startGame(){
+  goToChapter("resetPage");
+}
+
+startGame()
+
 localStorage.setItem("glass",false);
 let glassfound = Boolean("glass");
 
@@ -148,7 +154,7 @@ function impact() {
 
 let chapter =localStorage.getItem("name")
 
-function startGame(){
+/*function startGame(){
   if(chapter!=="resetPage"){
     goToChapter(chapter)
   }else{
@@ -156,4 +162,4 @@ function startGame(){
   }
 }
 
-startGame()
+startGame()*/
