@@ -91,18 +91,18 @@ let chaptersObj = {
   },
 };
 
+let audio = new Audio("assets/woosh.mp3")
 function goToChapter(chapterName) {
 
-  localStorage.setItem(`name`,[chapterName]);
+  localStorage.setItem("name",chapterName);
 
-  let audio = new Audio("assets/woosh.mp3")
+  
   audio.play()
 
 
   console.log(chaptersObj[chapterName]["subtitle"]);
   console.log(chaptersObj[chapterName]["text"]);
-  document.querySelector(".chapitre").innerHTML =
-    chaptersObj[chapterName]["subtitle"];
+  document.querySelector(".chapitre").innerHTML =chaptersObj[chapterName]["subtitle"];
   document.querySelector(".text").innerHTML = chaptersObj[chapterName]["text"];
   document.querySelector(".option").innerHTML = "";
 
@@ -128,8 +128,7 @@ function goToChapter(chapterName) {
     document.querySelector(".image").innerHTML = `<img src="assets/`+ chaptersObj[chapterName]['img']+`">`;
   }
 }
-
-function startGame(){
+/*function startGame(){
   goToChapter("resetPage");
 }
 
@@ -152,14 +151,37 @@ function impact() {
   }
 }
 
-let chapter =localStorage.getItem("name")
+let chapter =localStorage.getItem("name")*/
+function gotofirst() {
+  console.log(goToChapter('intro'));
+}
 
-/*function startGame(){
-  if(chapter!=="resetPage"){
+
+let glassfound = localStorage.setItem("glass",false);
+
+let chapter = localStorage.getItem("name");
+function startGame(){
+  if(chapter !== "resetPage"){
     goToChapter(chapter)
   }else{
-  goToChapter("resetPage")
+    goToChapter("death")
   }
 }
 
-startGame()*/
+function etat() {
+  localStorage.setItem("glass","true")
+  goToChapter("resetPage");
+  
+}
+
+function impact() {
+  glassfound = localStorage.getItem("glass")
+  if(glassfound=="true"){
+    goToChapter("glass")
+    localStorage.clear();
+  }else{
+  goToChapter("death");
+}
+}
+
+startGame();
