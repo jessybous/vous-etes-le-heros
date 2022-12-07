@@ -81,3 +81,11 @@ video{
   border: 5px solid #000;
   color: #fff;
 }
+
+.check{
+  align-self: flex-start;
+}
+
+.audio{
+
+}

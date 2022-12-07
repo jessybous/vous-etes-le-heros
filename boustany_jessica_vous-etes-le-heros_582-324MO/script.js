@@ -6,6 +6,7 @@ let chaptersObj = {
     options: [
       { optionText: "ouvrir la porte", action: "goToChapter('open')" },
       { optionText: "Ne pas ouvrir", action: "goToChapter('dontOpen')" },
+      { optionText: "Recommencer la partie", action: "reset()" },
     ],
   },
 
@@ -17,6 +18,7 @@ let chaptersObj = {
       { optionText: "Ressortir", action: "goToChapter('sortir')" },
       { optionText: "Aller vers le bruit", action: "goToChapter('goToNoise')" },
       { optionText: "Attendre", action: "goToChapter('wait')" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
   dontOpen: {
@@ -24,7 +26,8 @@ let chaptersObj = {
     text: "Luka decide de faire demi-tour. Soudainement, il se fait attaquer par des loup et meurt.",
     img: "foret-bleu-sombre.png",
     options: [
-      { optionText: "Recommencer", action: "goToChapter('resetPage')" },
+      { optionText: "Retourner au début", action: "goToChapter('resetPage')" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
 
@@ -33,7 +36,8 @@ let chaptersObj = {
     text: "Luka decide de sortir par la porte. Soudainement, il se fait attaquer par des loup et meurt.",
     img: "foret-bleu-sombre.png",
     options: [
-      { optionText: "Recommencer", action: "goToChapter('resetPage')" },
+      { optionText: "Retourner au début", action: "goToChapter('resetPage')" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
 
@@ -43,7 +47,8 @@ let chaptersObj = {
     img: "foret-yeux.png",
     video: "gif_zombie.mp4",
     options: [
-      { optionText: "Recommencer", action: "goToChapter('resetPage')" },
+      { optionText: "Retourner au début", action: "etat()" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
   wait: {
@@ -53,6 +58,7 @@ let chaptersObj = {
     options: [
       { optionText: "se défendre", action: "impact()" },
       { optionText: "chercher une arme", action: "impact()" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
 
@@ -60,7 +66,9 @@ let chaptersObj = {
     subtitle: "GameOver",
     text: "Malheureusement, la créature fini par le dévorer, car il n'a pas pu se défendre. Vous avez récupérer un bout de vitre pointu qui vous sera utile plus tard.",
     img: "foret-yeux.png",
-    options: [{ optionText: "Recommencer", action: "etat()" }],
+    options: [{ optionText: "Retourner au début", action: "etat()" },
+    { optionText: "Effacer la partie", action: "reset()" },],
+    
   },
 
   glass: {
@@ -70,6 +78,7 @@ let chaptersObj = {
     options: [
       { optionText: "S'enfuire", action: "goToChapter('run')" },
       { optionText: "rester", action: "goToChapter('hemoragie')" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
   run: {
@@ -78,7 +87,7 @@ let chaptersObj = {
     img: "foret-homme.png",
     video: "gif_run.mp4",
     options: [
-      { optionText: "Recommencer", action: "goToChapter('resetPage')" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
   hemoragie: {
@@ -86,7 +95,8 @@ let chaptersObj = {
     text: "la créature est trop lourde pour vous. plus le temps passe plus Luka a une sensation de brûlure dans ses poumons et fini par mourir d'une hémoragie",
     img: "foret-yeux.png",
     options: [
-      { optionText: "Recommencer", action: "goToChapter('resetPage')" },
+      { optionText: "Retourner au début", action: "goToChapter('resetPage')" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
 };
@@ -96,8 +106,6 @@ function goToChapter(chapterName) {
 
   localStorage.setItem("name",chapterName);
 
-  
-  audio.play()
 
 
   console.log(chaptersObj[chapterName]["subtitle"]);
@@ -127,6 +135,8 @@ function goToChapter(chapterName) {
   }else{
     document.querySelector(".image").innerHTML = `<img src="assets/`+ chaptersObj[chapterName]['img']+`">`;
   }
+  audio.currentTime=0;
+  audio.play()
 }
 /*function startGame(){
   goToChapter("resetPage");
@@ -152,15 +162,14 @@ function impact() {
 }
 
 let chapter =localStorage.getItem("name")*/
-function gotofirst() {
-  console.log(goToChapter('intro'));
-}
+
 
 
 let glassfound = localStorage.setItem("glass",false);
 
 let chapter = localStorage.getItem("name");
 function startGame(){
+  goToChapter("resetPage")
   if(chapter !== "resetPage"){
     goToChapter(chapter)
   }else{
@@ -185,3 +194,14 @@ function impact() {
 }
 
 startGame();
+
+
+
+
+function reset() {
+  goToChapter('resetPage');
+  glassfound= false;
+  localStorage.removeItem("glass")
+ }
+
+
