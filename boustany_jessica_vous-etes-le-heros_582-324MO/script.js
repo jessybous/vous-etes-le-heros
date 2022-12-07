@@ -101,15 +101,21 @@ let chaptersObj = {
   },
 };
 
-let audio = new Audio("assets/woosh.mp3")
+
 function goToChapter(chapterName) {
 
+  let checkaudio = document.querySelector("[type='checkbox']")
+  let son = checkaudio.checked
+  if(son == true){
+    const audio = new Audio("assets/woosh.mp3")
+    audio.currentTime=0;
+    audio.play()
+  }
   localStorage.setItem("name",chapterName);
 
 
 
-  console.log(chaptersObj[chapterName]["subtitle"]);
-  console.log(chaptersObj[chapterName]["text"]);
+
   document.querySelector(".chapitre").innerHTML =chaptersObj[chapterName]["subtitle"];
   document.querySelector(".text").innerHTML = chaptersObj[chapterName]["text"];
   document.querySelector(".option").innerHTML = "";
@@ -135,8 +141,10 @@ function goToChapter(chapterName) {
   }else{
     document.querySelector(".image").innerHTML = `<img src="assets/`+ chaptersObj[chapterName]['img']+`">`;
   }
-  audio.currentTime=0;
-  audio.play()
+
+  let body = document.querySelector("body");
+  body.setAttribute("class", [chapterName])
+
 }
 /*function startGame(){
   goToChapter("resetPage");
