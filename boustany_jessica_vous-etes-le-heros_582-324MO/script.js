@@ -204,4 +204,13 @@ function reset() {
   localStorage.removeItem("glass")
  }
 
-
+ let jeu = document.querySelector(".game")
+let btnAudio = document.querySelector(".audio")
+ btnAudio.addEventListener("click", function(){
+  jeu.classList.toggle("sound-playing")
+  if(jeu.classList.contains("sound-playing")){
+    trame.pause();
+  }else{
+    trame.play()
+  }
+})

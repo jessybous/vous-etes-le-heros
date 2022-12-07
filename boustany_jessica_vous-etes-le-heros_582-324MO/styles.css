@@ -86,6 +86,10 @@ video{
   align-self: flex-start;
 }
 
-.audio{
+input{
+  display:none;
+}
 
+label{
+  width: 100px;
 }
