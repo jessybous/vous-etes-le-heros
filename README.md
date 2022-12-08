@@ -12,4 +12,4 @@
 
 ## Diagramme
 
-![diagramme](boustany_jessica_vous-etes-le-heros_582-324MO/assets/synospsis.png)
+![diagramme](/assets/synospsis.png)
