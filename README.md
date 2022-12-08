@@ -12,4 +12,4 @@
 
 ## Diagramme
 
-![diagramme](/assets/synospsis.png)
+![diagramme](assets/synospsis.png)
