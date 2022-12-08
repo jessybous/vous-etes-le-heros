@@ -93,11 +93,10 @@ label{
 
 .death, .dontOpen, .sortir, .goToNoise, .hemoragie {
    background-image: linear-gradient(#000000, #03000c, #0d0d3e,#450000c8);
+   
 }
 
-.death, .dontOpen, .sortir, .goToNoise, .hemoragie .bouton{
-  background-color: #5c1919;
-}
+
 .run{
   background-image: linear-gradient(#160059, #160059, #282aa4,#009436d1);
 }
@@ -107,6 +106,6 @@ label{
   border-color: #0d0d3e;
 }
 
-.run .game{
+ .run .game{
   box-shadow: 2px 2px 20px 5px #00ffbfbe;
 }

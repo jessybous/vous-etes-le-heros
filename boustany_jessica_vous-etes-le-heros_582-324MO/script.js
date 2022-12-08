@@ -6,7 +6,7 @@ let chaptersObj = {
     options: [
       { optionText: "ouvrir la porte", action: "goToChapter('open')" },
       { optionText: "Ne pas ouvrir", action: "goToChapter('dontOpen')" },
-      { optionText: "Recommencer la partie", action: "reset()" },
+      { optionText: "Effacer la partie", action: "reset()" },
     ],
   },
 
@@ -210,7 +210,7 @@ function reset() {
   goToChapter('resetPage');
   glassfound= false;
   localStorage.removeItem("glass")
- }
+}
 
  let jeu = document.querySelector(".game")
 let btnAudio = document.querySelector(".audio")
